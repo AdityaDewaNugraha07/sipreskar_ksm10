@@ -1,5 +1,5 @@
 <div class="container-xxl flex-grow-1 container-p-y">
-    
+
     <!-- =========================================================
          CUSTOM STYLE KHUSUS ANIMASI FLOWCHART & CARD HOVER
          (Hanya dipertahankan yang tidak ada di bawaan Sneat)
@@ -9,6 +9,7 @@
         .card-hover-lift {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .card-hover-lift:hover {
             transform: translateY(-5px);
             box-shadow: 0 0.5rem 1.5rem rgba(105, 108, 255, 0.15) !important;
@@ -23,6 +24,7 @@
             gap: 15px;
             padding: 0.5rem;
         }
+
         .flow-node {
             flex: 1;
             min-width: 200px;
@@ -35,6 +37,7 @@
             cursor: pointer;
             position: relative;
         }
+
         .flow-node .flow-icon {
             width: 60px;
             height: 60px;
@@ -48,7 +51,7 @@
             margin-bottom: 1rem;
             transition: all 0.4s ease;
         }
-        
+
         /* Efek Saat Flowchart Disentuh (Hover) */
         .flow-node:hover {
             border-style: solid;
@@ -57,6 +60,7 @@
             box-shadow: 0 10px 20px rgba(105, 108, 255, 0.2);
             z-index: 10;
         }
+
         .flow-node:hover .flow-icon {
             background: #696cff;
             color: #fff;
@@ -64,26 +68,95 @@
             box-shadow: 0 0 15px rgba(105, 108, 255, 0.5);
         }
 
-        /* Panah Penghubung Animasi Ngalir */
-        .flow-arrow {
-            color: #a1acb8;
-            font-size: 2rem;
-            animation: pulse-arrow 2s infinite;
-        }
-        @keyframes pulse-arrow {
-            0% { transform: translateX(0); opacity: 0.5; }
-            50% { transform: translateX(10px); opacity: 1; color: #696cff; }
-            100% { transform: translateX(0); opacity: 0.5; }
+        /* =========================================
+           ANIMASI PANAH CUSTOM (DESKTOP & MOBILE)
+           ========================================= */
+        .panah-animasi {
+            color: #696cff;
+            /* Warna dasar abu-abu */
         }
 
-        /* Responsif HP untuk Flowchart */
+        /* Animasi Geser Kanan (Khusus Layar Desktop) */
+        .bx-fade-right {
+            animation: panah-kanan 1.5s infinite ease-in-out !important;
+        }
+
+        @keyframes panah-kanan {
+            0% {
+                transform: translateX(-5px);
+                opacity: 0.4;
+                color: #a1acb8;
+            }
+
+            50% {
+                transform: translateX(5px);
+                opacity: 1;
+                color: #696cff !important;
+            }
+
+            /* Ungu Sneat */
+            100% {
+                transform: translateX(-5px);
+                opacity: 0.4;
+                color: #a1acb8;
+            }
+        }
+
+        /* =========================================
+           ANIMASI PANAH CUSTOM (DESKTOP & MOBILE)
+           ========================================= */
+        .animasi-geser-kanan {
+            animation: gerakKanan 1.5s infinite ease-in-out;
+        }
+
+        @keyframes gerakKanan {
+            0% {
+                transform: translateX(-5px);
+                opacity: 0.4;
+                color: #a1acb8;
+            }
+
+            50% {
+                transform: translateX(5px);
+                opacity: 1;
+                color: #696cff;
+            }
+
+            100% {
+                transform: translateX(-5px);
+                opacity: 0.4;
+                color: #a1acb8;
+            }
+        }
+
+        .animasi-geser-bawah {
+            animation: gerakBawah 1.5s infinite ease-in-out;
+        }
+
+        @keyframes gerakBawah {
+            0% {
+                transform: translateY(-5px);
+                opacity: 0.4;
+                color: #a1acb8;
+            }
+
+            50% {
+                transform: translateY(5px);
+                opacity: 1;
+                color: #696cff;
+            }
+
+            100% {
+                transform: translateY(-5px);
+                opacity: 0.4;
+                color: #a1acb8;
+            }
+        }
+
+        /* Responsif HP untuk menyusun kotak ke bawah */
         @media (max-width: 991px) {
-            .flow-container { flex-direction: column; }
-            .flow-arrow { transform: rotate(90deg); margin: 10px 0; }
-            @keyframes pulse-arrow {
-                0% { transform: rotate(90deg) translateY(0); opacity: 0.5; }
-                50% { transform: rotate(90deg) translateY(-10px); opacity: 1; color: #696cff; }
-                100% { transform: rotate(90deg) translateY(0); opacity: 0.5; }
+            .flow-container {
+                flex-direction: column;
             }
         }
     </style>
@@ -97,12 +170,14 @@
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Selamat Datang, {{ Auth::user()->nama ?? 'Admin' }}! 🎉</h5>
+                            <h5 class="card-title text-primary">Selamat Datang, {{ Auth::user()->nama ?? 'Admin' }}! 🎉
+                            </h5>
                             <p class="mb-4">
-                                Sistem Informasi Keanggotaan dan Presensi <span class="fw-bold">KSM 10</span>. 
+                                Sistem Informasi Keanggotaan dan Presensi <span class="fw-bold">KSM 10</span>.
                                 Pantau kehadiran anggota dan kelola data dengan mudah dan cepat.
                             </p>
-                            <a href="{{ route('presensi.qrcode') }}" wire:navigate class="btn btn-sm btn-outline-primary">
+                            <a href="{{ route('presensi.qrcode') }}" wire:navigate
+                                class="btn btn-sm btn-outline-primary">
                                 Lihat QR Code Saya
                             </a>
                         </div>
@@ -110,7 +185,9 @@
                     <div class="col-sm-5 text-center text-sm-left">
                         <div class="card-body pb-0 px-0 px-md-4">
                             <!-- Ilustrasi Bawaan Sneat -->
-                            <img src="{{ asset('assets/img/illustrations/man-with-laptop-light.png') }}" height="140" alt="Welcome Image" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
+                            <img src="{{ asset('assets/img/illustrations/man-with-laptop-light.png') }}" height="140"
+                                alt="Welcome Image" data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                data-app-light-img="illustrations/man-with-laptop-light.png" />
                         </div>
                     </div>
                 </div>
@@ -128,14 +205,15 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <span class="avatar-initial rounded bg-label-success"><i class="bx bx-group fs-4"></i></span>
+                                    <span class="avatar-initial rounded bg-label-success"><i
+                                            class="bx bx-group fs-4"></i></span>
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Total Anggota</span>
-                            
+
                             <!-- Panggil Variabel Total Anggota di Sini -->
                             <h3 class="card-title mb-2">{{ $totalAnggota }}</h3>
-                            
+
                             <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> Aktif</small>
                         </div>
                     </div>
@@ -146,14 +224,15 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <span class="avatar-initial rounded bg-label-info"><i class="bx bx-calendar-check fs-4"></i></span>
+                                    <span class="avatar-initial rounded bg-label-info"><i
+                                            class="bx bx-calendar-check fs-4"></i></span>
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Kehadiran</span>
-                            
+
                             <!-- Panggil Variabel Hadir Hari Ini di Sini -->
                             <h3 class="card-title text-nowrap mb-1">{{ $hadirHariIni }}</h3>
-                            
+
                             <small class="text-info fw-semibold"><i class="bx bx-check"></i> Hari ini</small>
                         </div>
                     </div>
@@ -164,7 +243,7 @@
 
     <div class="row">
         <!-- ==============================================
-             3. FLOWCHART INTERAKTIF 
+             3. FLOWCHART INTERAKTIF
              ============================================== -->
         <div class="col-12 order-2 mb-4">
             <div class="card card-hover-lift h-100">
@@ -176,46 +255,73 @@
                 </div>
                 <div class="card-body">
                     <div class="flow-container">
-                        
+
                         <!-- Node 1 -->
                         <div class="flow-node">
                             <div class="flow-icon"><i class="bx bx-qr-scan"></i></div>
                             <h6 class="fw-bold mb-1">1. Generate QR</h6>
-                            <p class="text-muted small mb-0">Anggota membuka menu QR Code Saya untuk melihat kode unik.</p>
+                            <p class="text-muted small mb-0">Anggota membuka menu QR Code Saya untuk melihat kode unik.
+                            </p>
                         </div>
 
                         <!-- Arrow -->
-                        <i class="bx bx-chevrons-right flow-arrow"></i>
+                        <!-- Mode Desktop: Panah Kanan -->
+                        <div class="d-none d-md-flex justify-content-center align-items-center px-3">
+                            <i class="bx bx-chevrons-right animasi-geser-kanan" style="font-size: 2rem;"></i>
+                        </div>
+
+                        <!-- Mode HP: Panah Bawah -->
+                        <div class="d-md-none d-flex justify-content-center align-items-center py-3">
+                            <i class="bx bx-chevrons-down animasi-geser-bawah" style="font-size: 2rem;"></i>
+                        </div>
 
                         <!-- Node 2 -->
                         <div class="flow-node">
                             <div class="flow-icon"><i class="bx bx-scan"></i></div>
                             <h6 class="fw-bold mb-1">2. Proses Scan</h6>
-                            <p class="text-muted small mb-0">Admin / Petugas melakukan scan QR menggunakan kamera di sistem.</p>
+                            <p class="text-muted small mb-0">Admin / Petugas melakukan scan QR menggunakan kamera di
+                                sistem.</p>
                         </div>
 
                         <!-- Arrow -->
-                        <i class="bx bx-chevrons-right flow-arrow"></i>
+                        <!-- Mode Desktop: Panah Kanan -->
+                        <div class="d-none d-md-flex justify-content-center align-items-center px-3">
+                            <i class="bx bx-chevrons-right animasi-geser-kanan" style="font-size: 2rem;"></i>
+                        </div>
+
+                        <!-- Mode HP: Panah Bawah -->
+                        <div class="d-md-none d-flex justify-content-center align-items-center py-3">
+                            <i class="bx bx-chevrons-down animasi-geser-bawah" style="font-size: 2rem;"></i>
+                        </div>
 
                         <!-- Node 3 -->
                         <div class="flow-node">
                             <!-- Ganti bx-data menjadi bx-check-shield (sangat cocok untuk "Validasi") -->
                             <div class="flow-icon"><i class="bx bx-check-circle"></i></div>
                             <h6 class="fw-bold mb-1">3. Validasi Data</h6>
-                            <p class="text-muted small mb-0">Sistem mencatat identitas dan jam hadir secara otomatis.</p>
+                            <p class="text-muted small mb-0">Sistem mencatat identitas dan jam hadir secara otomatis.
+                            </p>
                         </div>
 
                         <!-- Arrow -->
-                        <i class="bx bx-chevrons-right flow-arrow"></i>
+                        <!-- Mode Desktop: Panah Kanan -->
+                        <div class="d-none d-md-flex justify-content-center align-items-center px-3">
+                            <i class="bx bx-chevrons-right animasi-geser-kanan" style="font-size: 2rem;"></i>
+                        </div>
+
+                        <!-- Mode HP: Panah Bawah -->
+                        <div class="d-md-none d-flex justify-content-center align-items-center py-3">
+                            <i class="bx bx-chevrons-down animasi-geser-bawah" style="font-size: 2rem;"></i>
+                        </div>
 
                         <!-- Node 4 -->
                         <div class="flow-node">
                             <!-- Ganti bx-bar-chart-alt-2 menjadi bx-bar-chart (versi klasik yang pasti ada) -->
                             <div class="flow-icon"><i class="bx bx-bar-chart"></i></div>
                             <h6 class="fw-bold mb-1">4. Laporan Rekap</h6>
-                            <p class="text-muted small mb-0">Data kehadiran langsung masuk ke laporan secara Real-time.</p>
+                            <p class="text-muted small mb-0">Data kehadiran langsung masuk ke laporan secara Real-time.
+                            </p>
                         </div>
-
                     </div>
                 </div>
             </div>
