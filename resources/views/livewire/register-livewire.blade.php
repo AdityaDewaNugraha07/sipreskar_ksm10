@@ -32,6 +32,22 @@
                             @error('nomor_telepon') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
 
+                        <div class="mb-3">
+                            <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                            <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" wire:model="tanggal_lahir" id="tanggal_lahir">
+                            @error('tanggal_lahir') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                            <select class="form-select @error('jenis_kelamin') is-invalid @enderror" wire:model="jenis_kelamin" id="jenis_kelamin">
+                                <option value="">-- Pilih Jenis Kelamin --</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                            @error('jenis_kelamin') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+
                         <div class="mb-3 form-password-toggle">
                             <label class="form-label" for="password">Password</label>
                             <div class="input-group input-group-merge">

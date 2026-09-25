@@ -13,6 +13,8 @@ class RegisterLivewire extends Component
 {
     public $nama;
     public $nomor_telepon;
+    public $tanggal_lahir;
+    public $jenis_kelamin;
     public $password;
     public $password_confirmation;
 
@@ -24,7 +26,7 @@ class RegisterLivewire extends Component
             'nomor_telepon' => 'required|string|max:20',
             'password' => 'required|min:6|confirmed', // Harus cocok dgn password_confirmation
         ], [
-            'nama.unique' => 'Nama ini sudah terdaftar bro, pakai nama lain ya.',
+            'nama.unique' => 'Nama ini sudah terdaftar, pakai nama lain ya.',
             'password.min' => 'Password minimal 6 karakter biar aman.',
             'password.confirmed' => 'Oops, konfirmasi password tidak sama!',
         ]);
@@ -33,13 +35,13 @@ class RegisterLivewire extends Component
         $user = KarangTaruna::create([
             'nama' => $this->nama,
             'nomor_telepon' => $this->nomor_telepon,
+            'tanggal_lahir' => $this->tanggal_lahir, // Ambil dari input
+            'jenis_kelamin' => $this->jenis_kelamin, // Ambil dari input
             'password' => Hash::make($this->password),
-            
-            // Set Default Value agar tidak error saat Insert DB
-            'jabatan' => 'Anggota', 
+
+            // Set Default Value untuk role
+            'jabatan' => 'Anggota',
             'role' => 'User',
-            'tanggal_lahir' => date('Y-m-d'), // Default hari ini
-            'jenis_kelamin' => 'Laki-laki',   // Default 
         ]);
 
         // 3. Langsung Otomatis Login setelah daftar
