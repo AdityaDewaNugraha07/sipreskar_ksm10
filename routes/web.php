@@ -22,8 +22,10 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth:karangtaruna,pembina')->group(function () {
 
+    // AKSES SEMUA USER (Karang Taruna & Pembina)
     Route::get('/dashboard', DashboardLivewire::class)->name('dashboard');
     Route::get('/profil', ProfilLivewire::class)->name('profil');
+    Route::get('/kas', \App\Livewire\KasLivewire::class)->name('kas');
     Route::get('/rekap-kehadiran', RekapKehadiranLivewire::class)->name('rekap-kehadiran');
     Route::get('/presensi/qrcode', QrCodeSayaLivewire::class)->name('presensi.qrcode');
 

@@ -15,6 +15,7 @@
         'presensi.scan' => 'Scan Presensi',
         'presensi.qrcode' => 'QR Code Saya',
         'rekap-kehadiran' => 'Rekap Kehadiran',
+        'kas' => 'Manajemen Kas',
         'profil' => 'Profil Saya',
         default => 'Manajemen KSM 10',
     };

@@ -15,18 +15,18 @@
     <div class="menu-divider mt-0"></div>
     <div class="menu-inner-shadow"></div>
 
-   @php
+    @php
         $currentRoute = Route::currentRouteName();
         // Cek siapa yang login untuk render sidebar
         if (Auth::guard('pembina')->check()) {
             $userRole = 'Pembina';
         } else {
-            $userRole = Auth::guard('karangtaruna')->user()->role ?? 'User'; 
+            $userRole = Auth::guard('karangtaruna')->user()->role ?? 'User';
         }
     @endphp
 
     <ul class="menu-inner py-1">
-        
+
         <!-- MENU GLOBAL: DASHBOARD -->
         <li class="menu-item {{ $currentRoute === 'dashboard' ? 'active' : '' }}">
             <a class="menu-link" href="{{ route('dashboard') }}" wire:navigate>
@@ -52,7 +52,7 @@
                 </a>
             </li>
         @endif
-        
+
 
         <!-- ==========================================
              MENU PRESENSI (Admin = Scan, User = QR Code)
@@ -83,6 +83,13 @@
             <a class="menu-link" href="{{ route('rekap-kehadiran') }}" wire:navigate>
                 <i class="menu-icon tf-icons bx bx-file-report"></i>
                 <div class="text-truncate">Rekap Kehadiran</div>
+            </a>
+        </li>
+
+        <li class="menu-item {{ Route::is('kas') ? 'active' : '' }}">
+            <a href="{{ route('kas') }}" class="menu-link" wire:navigate>
+                <i class="menu-icon tf-icons bx bx-wallet"></i>
+                <div class="text-truncate">Manajemen Kas</div>
             </a>
         </li>
 
