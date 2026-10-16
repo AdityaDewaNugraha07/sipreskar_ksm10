@@ -35,8 +35,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
-    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
-    <script src="{{ asset('assets/js/config.js') }}"></script>
+    <!-- CROPPER CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
 
     @livewireStyles
 
@@ -225,7 +225,6 @@
         }
     </style>
     <!-- CROPPER JS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 </head>
 </head>
@@ -261,6 +260,9 @@
     <script src="{{ asset('assets/js/dashboards-analytics.js') }}" data-navigate-once></script>
     <script async defer src="https://buttons.github.io/buttons.js" data-navigate-once></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" data-navigate-once></script>
+
+    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
+    <script src="{{ asset('assets/js/config.js') }}"></script>
 
     <script>
         function destroyAllBackdrops() {
