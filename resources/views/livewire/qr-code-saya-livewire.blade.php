@@ -18,9 +18,9 @@
                         <div class="p-3 bg-white border border-2 border-primary rounded-3 d-inline-block shadow-sm">
                             {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(220)->margin(1)->generate($kodeQr) !!}
                         </div>
-                        <div class="mt-4">
+                        {{-- <div class="mt-4">  
                             <span class="badge bg-label-dark px-3 py-2 fs-6 letter-spacing-1">{{ $kodeQr }}</span>
-                        </div>
+                        </div> --}}
                     @else
                         <div class="alert alert-danger mt-3" role="alert">
                             ❌ QR Code tidak tersedia untuk akun ini.

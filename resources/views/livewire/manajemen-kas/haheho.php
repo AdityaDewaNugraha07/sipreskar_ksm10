@@ -84,7 +84,7 @@
                     </div>
                     <h4 class="card-title text-success fw-bold mb-1">+ Rp {{ number_format($totalMasuk, 0, ',', '.') }}
                     </h4>
-                    <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> Iuran & Donasi</small>
+                    <small class="text-success fw-semibold"><i class="bx bx-chevrons-up"></i> Iuran & Donasi</small>
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@
                     </div>
                     <h4 class="card-title text-danger fw-bold mb-1">- Rp {{ number_format($totalKeluar, 0, ',', '.') }}
                     </h4>
-                    <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> Belanja &
+                    <small class="text-danger fw-semibold"><i class="bx bx-chevrons-down"></i> Belanja &
                         Keperluan</small>
                 </div>
             </div>
@@ -403,7 +403,8 @@
                                     </span>
                                 </td>
                                 <td class="fw-bold text-danger">Rp
-                                    {{ number_format($tunggakan->nominal, 0, ',', '.') }}</td>
+                                    {{ number_format($tunggakan->nominal, 0, ',', '.') }}
+                                </td>
                                 <td><span class="badge bg-danger">BELUM BAYAR</span></td>
                                 @if ($this->isPengelola)
                                     <td class="text-center">

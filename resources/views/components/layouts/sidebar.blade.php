@@ -68,7 +68,7 @@
             </li>
         @endif
 
-        <!-- QR Code berlaku untuk semuanya (termasuk Admin/Pembina kalau mau absen) -->
+        <!-- QR Code -->
         <li class="menu-item {{ $currentRoute === 'presensi.qrcode' ? 'active' : '' }}">
             <a href="{{ route('presensi.qrcode') }}" class="menu-link" wire:navigate>
                 <i class="menu-icon tf-icons bx bx-qr"></i>
